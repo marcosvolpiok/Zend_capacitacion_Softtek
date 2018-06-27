@@ -22,8 +22,44 @@ return [
                         'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
+
+
                 ],
             ],
+
+
+            'empresas' => [
+                'type' => Literal::class,
+                    'options' => [
+                    'route'    => '/empresas',
+
+                    'defaults' => [
+                        'controller' => Controller\EmpresasController::class,
+                        'action'     => 'index',
+                    ],
+
+
+                ],
+            ],
+
+            'empresasAdd' => [
+                'type' => Literal::class,
+                    'options' => [
+                    'route'    => '/empresas/add',
+
+                    'defaults' => [
+                        'controller' => Controller\EmpresasController::class,
+                        'action'     => 'add',
+                    ],
+
+
+                ],
+            ],
+
+
+
+
+
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -39,6 +75,9 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            //Controller\EmpresasController::class => InvokableFactory::class,
+
+
         ],
     ],
     'view_manager' => [

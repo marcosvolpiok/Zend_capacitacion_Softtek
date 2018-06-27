@@ -1,0 +1,36 @@
+Testing view.
+
+
+
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Listando empresas';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('empresas', ['action' => 'add']) ?>">Nueva empresa</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($empresas as $empresa) : 
+
+
+//print_r($empresa);
+?>
+    <tr>
+        <td><?= $this->escapeHtml($empresa->nombre) ?></td>
+        <td><?= $this->escapeHtml($empresa->descripcion) ?></td>
+        <td>
+            <a href="<?= $this->url('empresas', ['action' => 'add', 'id' => $empresa->id]) ?>">Edit</a>
+            <a href="<?= $this->url('empresas', ['action' => 'delete', 'id' => $empresa->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
