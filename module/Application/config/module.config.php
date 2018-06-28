@@ -28,10 +28,10 @@ return [
             ],
 
 
-            'empresas' => [
+            'empresasList' => [
                 'type' => Literal::class,
                     'options' => [
-                    'route'    => '/empresas',
+                    'route'    => '/empresasList',
 
                     'defaults' => [
                         'controller' => Controller\EmpresasController::class,
@@ -42,22 +42,21 @@ return [
                 ],
             ],
 
-            'empresasAdd' => [
-                'type' => Literal::class,
-                    'options' => [
-                    'route'    => '/empresas/add',
 
+            'empresas' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route' => '/empresas[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ],
                     'defaults' => [
                         'controller' => Controller\EmpresasController::class,
-                        'action'     => 'add',
+                        'action'     => 'index',
                     ],
-
-
                 ],
             ],
-
-
-
 
 
             'application' => [

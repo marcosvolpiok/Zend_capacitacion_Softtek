@@ -10,6 +10,10 @@ namespace Application\Controller;
 use Application\Model\EmpresasTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Form\EmpresasForm;
+use Application\Model\Empresas;
+
+
 
 class EmpresasController extends AbstractActionController
 {
@@ -43,6 +47,26 @@ class EmpresasController extends AbstractActionController
 
     public function addAction()
     {
+        $form = new EmpresasForm();
+        $form->get('submit')->setValue('Add');
+
+        $request = $this->getRequest();
+
+        if (! $request->isPost()) {
+            return ['form' => $form];
+        }
+
+        $empresas = new Empresas();
+        $form->setInputFilter($empresas->getInputFilter());
+        $form->setData($request->getPost());
+
+        if (! $form->isValid()) {
+            return ['form' => $form];
+        }
+
+        $empresas->exchangeArray($form->getData());
+        $this->table->saveEmpresas($empresas);
+        return $this->redirect()->toRoute('empresasList');        
     }
 
     public function editAction()

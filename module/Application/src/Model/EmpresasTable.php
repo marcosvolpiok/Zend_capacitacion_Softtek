@@ -34,11 +34,11 @@ class EmpresasTable
         return $row;
     }
 
-    public function saveEmpresa(Empresa $empresa)
+    public function saveEmpresas(Empresas $empresas)
     {
         $data = [
-            'nombre' => $empresa->nombre,
-            'descripcion'  => $empresa->descripcion,
+            'nombre' => $empresas->nombre,
+            'descripcion'  => $empresas->descripcion,
         ];
 
         $id = (int) $empresa->id;

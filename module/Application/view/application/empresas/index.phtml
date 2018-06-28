@@ -28,7 +28,7 @@ $this->headTitle($title);
         <td><?= $this->escapeHtml($empresa->nombre) ?></td>
         <td><?= $this->escapeHtml($empresa->descripcion) ?></td>
         <td>
-            <a href="<?= $this->url('empresas', ['action' => 'add', 'id' => $empresa->id]) ?>">Edit</a>
+            <a href="<?= $this->url('empresas', ['action' => 'edit', 'id' => $empresa->id]) ?>">Edit</a>
             <a href="<?= $this->url('empresas', ['action' => 'delete', 'id' => $empresa->id]) ?>">Delete</a>
         </td>
     </tr>
