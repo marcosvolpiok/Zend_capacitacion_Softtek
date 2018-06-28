@@ -1,1 +1,22 @@
-delete
+<?php
+// module/Album/view/application/empresas/delete.phtml:
+
+$title = 'Borrar empresa';
+$url   = $this->url('empresas', ['action' => 'delete', 'id' => $id]);
+
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+    ¿Estás seguro de que querés borrar la empresa
+    "<?= $this->escapeHtml($empresas->nombre) ?>"?
+</p>
+
+<form action="<?= $url ?>" method="post">
+<div class="form-group">
+    <input type="hidden" name="id" value="<?= (int) $empresas->id ?>" />
+    <input type="submit" class="btn btn-danger" name="del" value="Yes" />
+    <input type="submit" class="btn btn-success" name="del" value="No" />
+</div>
+</form>

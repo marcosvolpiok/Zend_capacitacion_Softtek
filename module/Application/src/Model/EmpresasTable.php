@@ -19,7 +19,7 @@ class EmpresasTable
         return $this->tableGateway->select();
     }
 
-    public function getEmpresa($id)
+    public function getEmpresas($id)
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
@@ -58,7 +58,7 @@ class EmpresasTable
         $this->tableGateway->update($data, ['id' => $id]);
     }
 
-    public function deleteEmpresa($id)
+    public function deleteEmpresas($id)
     {
         $this->tableGateway->delete(['id' => (int) $id]);
     }
